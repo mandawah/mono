@@ -202,6 +202,11 @@ setup_baud_rate (int baud_rate, gboolean *custom_baud_rate)
 	switch (baud_rate)
 	{
 /*Some values are not defined on OSX, *BSD, or AIX */
+#if defined(B1000000)
+	case 1000000:
+            baud_rate = B1000000;
+            break;
+#endif
 #if defined(B921600)
 	case 921600:
 	    baud_rate = B921600;
